@@ -1,0 +1,192 @@
+import React from 'react';
+import './App.css';
+
+const AccountSelection = () => {
+  return (
+    <div className="account-page">
+      {/* Background Bubbles */}
+      <div className="bubble-container">
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+        <div className="bubble"></div>
+      </div>
+
+      {/* Main Content */}
+      <div className="content-container">
+        <h1 className="account-title">Hello Aman, Welcome to Cosmos</h1>
+        <p className="account-subtitle">Please select your role below</p>
+
+        {/* Dropdown */}
+        <select className="account-select">
+          <option value="Part Lead">Part Lead</option>
+          <option value="Group Head">Group Head</option>
+          <option value="Team Head">Team Head</option>
+        </select>
+
+        {/* Action Button */}
+        <button className="account-button">Confirm Selection</button>
+      </div>
+    </div>
+  );
+};
+
+export default AccountSelection;
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
+/* Background Animation */
+@keyframes gradient-animation {
+  0% {
+      background: linear-gradient(135deg, #5c258d, #4389a2);
+  }
+  50% {
+      background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  }
+  100% {
+      background: linear-gradient(135deg, #5c258d, #4389a2);
+  }
+}
+
+@keyframes bubble-move {
+  0% {
+      transform: translateY(0) translateX(-100px);
+      opacity: 1;
+  }
+  100% {
+      transform: translateY(-100vh) translateX(100px);
+      opacity: 0;
+  }
+}
+
+/* Page Container */
+.account-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #5c258d, #4389a2);
+  background-size: 400% 400%;
+  animation: gradient-animation 15s ease infinite;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Floating Bubbles */
+.bubble-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  bottom: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, rgba(255, 255, 255, 0) 60%);
+  animation: bubble-move 15s infinite linear;
+}
+
+.bubble:nth-child(1) { width: 60px; height: 60px; animation-duration: 18s; left: 10%; }
+.bubble:nth-child(2) { width: 100px; height: 100px; animation-duration: 22s; left: 25%; }
+.bubble:nth-child(3) { width: 90px; height: 90px; animation-duration: 20s; left: 50%; }
+.bubble:nth-child(4) { width: 70px; height: 70px; animation-duration: 16s; left: 70%; }
+.bubble:nth-child(5) { width: 110px; height: 110px; animation-duration: 25s; left: 90%; }
+
+/* Content Box */
+.content-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 50px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-container:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+}
+
+/* Title Styling */
+.account-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Subtitle */
+.account-subtitle {
+  font-size: 16px;
+  color: #dcdcdc;
+  margin-bottom: 24px;
+}
+
+/* Dropdown Styling */
+.account-select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.account-select:focus {
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.8);
+  outline: none;
+}
+
+/* Dropdown Option Styling */
+.account-select option {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+/* Button Styling */
+.account-button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4389a2, #5c258d);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.account-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, #5c258d, #4389a2);
+}
+
+.account-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
