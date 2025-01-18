@@ -1,0 +1,87 @@
+// CustomTable.js
+import React from 'react';
+import { Col, Row } from 'antd';
+import './App.css';
+
+const CustomTable = () => {
+    const data = [
+        { roleId: '001', approvalType: 'Manager' },
+        { roleId: '002', approvalType: 'Admin' },
+        { roleId: '003', approvalType: 'User' },
+        { roleId: '004', approvalType: 'Viewer' },
+        { roleId: '005', approvalType: 'Editor' },
+    ];
+
+    return (
+        <Row justify="center" style={{ minHeight: '100vh', padding: '20px' }}>
+            <Col span={12}>
+              
+                <div className="table-container">
+                    {/* Corrected to a proper table layout */}
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Role ID</th>
+                                <th>Approval Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.map((item, index) => (
+                                <tr key={index}>
+                                    <td>{item.roleId}</td>
+                                    <td>{item.approvalType}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+                <h2>Approval Roles Table</h2>
+            </Col>
+        </Row>
+    );
+};
+
+export default CustomTable;
+
+
+
+/* CustomTable.css */
+.table-container {
+  padding: 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1e2a38, #2a3d5c);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  /* margin: auto; */
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 12px 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table th {
+  background: #4caf50;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.table tr:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.table td {
+  background: rgba(255, 255, 255, 0.05);
+  transition: background 0.3s ease;
+}
