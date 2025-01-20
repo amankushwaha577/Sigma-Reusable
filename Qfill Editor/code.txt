@@ -1,0 +1,233 @@
+// RichTextEditor.jsx
+import React, { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css"; // Import Quill's default styles
+import { FaBold, FaItalic, FaUnderline, FaListOl, FaListUl, FaAlignLeft, FaAlignCenter, FaAlignRight, FaLink, FaImage } from "react-icons/fa"; // Use professional icons
+import "./App.css"; // Custom styles for a beautiful UI
+
+const RichTextEditor = ({ value, onChange, placeholder = "Start typing here...", onExport }) => {
+  return (
+    <div className="editor-container">
+      <h2 className="editor-title">Creative Text Editor</h2>
+      <ReactQuill
+        theme="snow"
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        modules={{
+          toolbar: [
+            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'align': [] }],
+            ['bold', 'italic', 'underline', 'strike'],
+            ['link', 'image'],
+            ['blockquote', 'code-block'],
+            ['undo', 'redo'],
+            ['clean'] // For clearing formatting
+          ]
+        }}
+        formats={[
+          'header', 'font', 'list', 'align', 'bold', 'italic', 'underline', 'strike', 'link', 'image', 'blockquote', 'code-block'
+        ]}
+        className="custom-editor"
+      />
+      {onExport && (
+        <button className="export-button" onClick={onExport}>
+          Export to HTML
+        </button>
+      )}
+    </div>
+  );
+};
+
+
+
+
+const PostEditor = () => {
+    const [content, setContent] = useState("");
+  
+    const handleContentChange = (value) => {
+      setContent(value);
+    };
+  
+    const handleExportHTML = () => {
+      alert("Exported HTML: " + content);
+    };
+  
+    return (
+      <div>
+        <h1>Create a Post : {content}</h1>
+        <RichTextEditor
+          value={content}
+          onChange={handleContentChange}
+          placeholder="Write your post here..."
+          onExport={handleExportHTML}
+        />
+      </div>
+    );
+  };
+  
+  export default PostEditor;
+
+
+/* Editor Main Container */
+.editor-container {
+  max-width: 900px;
+  margin: 5rem auto;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #6e7dff, #00d4c1);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Title */
+.editor-title {
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 2rem;
+  font-size: 2.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(to right, #ff8a00, #e52e71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Quill Editor */
+.custom-editor {
+  background: linear-gradient(135deg, #ffffff, #f0f4ff); /* Subtle Gradient Background */
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: 'Helvetica', sans-serif;
+  transition: border 0.3s ease;
+}
+
+/* Text Body Styling */
+.custom-editor .ql-container .ql-editor {
+  background: #ffffff;
+  color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  min-height: 200px;
+  line-height: 1.8;
+  font-size: 16px;
+  font-family: 'Georgia', serif; /* Elegant Serif Font */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* When Editor is Focused */
+.custom-editor .ql-container .ql-editor:focus {
+  background: linear-gradient(to bottom, #ffffff, #f8fbff); /* Light gradient focus */
+  outline: none;
+  border: 2px solid #00d4c1;
+  box-shadow: 0 0 10px rgba(0, 212, 193, 0.5); /* Cool glowing effect */
+}
+
+/* Placeholder Text */
+.custom-editor .ql-editor .ql-placeholder {
+  color: #bbb;
+  font-style: italic;
+  font-size: 16px;
+}
+
+/* Selection Highlight */
+.custom-editor .ql-container .ql-editor ::selection {
+  background: #ffe6b3; /* Warm yellow highlight */
+  color: #000;
+}
+
+/* Link Styling */
+.custom-editor .ql-editor a {
+  color: #6e7dff;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px dashed #6e7dff;
+}
+
+.custom-editor .ql-editor a:hover {
+  color: #e52e71;
+  border-bottom: 1px solid #e52e71;
+}
+
+/* Toolbar */
+.custom-editor .ql-toolbar {
+  background: linear-gradient(90deg, #ff8a00, #e52e71, #9b51e0);
+  border: none;
+  border-radius: 12px 12px 0 0;
+  padding: 8px 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Quill Toolbar Icons */
+.custom-editor .ql-toolbar .ql-formats button {
+  color: white !important;
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.custom-editor .ql-toolbar .ql-formats button:hover {
+  color: #ffeb3b !important;
+  transform: scale(1.2);
+}
+
+.custom-editor .ql-toolbar button:focus {
+  outline: none;
+}
+
+.custom-editor .ql-toolbar .ql-formats button svg {
+  width: 20px;
+  height: 20px;
+  fill: white !important;
+}
+
+.custom-editor .ql-toolbar .ql-formats button:hover svg {
+  fill: #ffeb3b;
+}
+
+/* Export Button */
+.export-button {
+  margin-top: 1.5rem;
+  padding: 0.9rem 1.8rem;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.export-button:hover {
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+  transform: translateY(-2px);
+}
+
+.export-button:active {
+  transform: translateY(0);
+}
+
+/* Cool Scrollbar Styles */
+.custom-editor .ql-container .ql-editor::-webkit-scrollbar {
+  width: 10px;
+}
+
+.custom-editor .ql-container .ql-editor::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #e52e71, #ff8a00);
+  border-radius: 10px;
+}
+
+.custom-editor .ql-container .ql-editor::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ff8a00, #e52e71);
+}
