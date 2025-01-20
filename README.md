@@ -18,8 +18,8 @@ const CustomEditor = () => {
 
     return (
         <div style={styles.container}>
+            {/* Toolbar */}
             <div style={styles.toolbar}>
-                {/* Formatting buttons */}
                 <button onClick={() => handleCommand("bold")} style={styles.button}>
                     <b>B</b>
                 </button>
@@ -30,13 +30,13 @@ const CustomEditor = () => {
                     <u>U</u>
                 </button>
                 <button onClick={() => handleCommand("justifyLeft")} style={styles.button}>
-                    Left
+                    <span style={{ fontSize: "14px" }}>Left</span>
                 </button>
                 <button onClick={() => handleCommand("justifyCenter")} style={styles.button}>
-                    Center
+                    <span style={{ fontSize: "14px" }}>Center</span>
                 </button>
                 <button onClick={() => handleCommand("justifyRight")} style={styles.button}>
-                    Right
+                    <span style={{ fontSize: "14px" }}>Right</span>
                 </button>
                 <button onClick={() => handleCommand("insertOrderedList")} style={styles.button}>
                     OL
@@ -52,7 +52,7 @@ const CustomEditor = () => {
                 </button>
             </div>
 
-            {/* Editable content area */}
+            {/* Editor Area */}
             <div
                 ref={editorRef}
                 contentEditable={true}
@@ -61,73 +61,94 @@ const CustomEditor = () => {
                 suppressContentEditableWarning={true}
             ></div>
 
-            {/* Displaying the current content */}
+            {/* Displaying Content */}
             <div style={styles.previewWrapper}>
-                <h3>Editor Content:</h3>
+                <h3 style={styles.heading}>Editor Content Preview:</h3>
                 <div style={styles.preview}>{content}</div>
             </div>
         </div>
     );
 };
 
-// Sexy and modern styles
+// Vibrant Styles
 const styles = {
     container: {
-        fontFamily: "'Roboto', sans-serif",
-        maxWidth: "800px",
+        fontFamily: "'Poppins', sans-serif",
+        maxWidth: "900px",
         margin: "40px auto",
-        border: "1px solid #ddd",
-        borderRadius: "10px",
-        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+        border: "1px solid #e0e0e0",
+        borderRadius: "12px",
+        background: "linear-gradient(to right, #FFDEE9, #B5FFFC)",
+        boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.1)",
         overflow: "hidden",
-        backgroundColor: "#fff",
+        padding: "20px",
     },
     toolbar: {
         display: "flex",
-        gap: "10px",
-        padding: "10px",
-        backgroundColor: "#f4f4f4",
-        borderBottom: "1px solid #ddd",
-        justifyContent: "center",
         flexWrap: "wrap",
+        gap: "10px",
+        padding: "15px",
+        background: "linear-gradient(to right, #FF7EB3, #FF758C)",
+        borderRadius: "10px",
+        marginBottom: "15px",
+        justifyContent: "center",
+        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
     },
     button: {
         padding: "10px 15px",
         cursor: "pointer",
+        fontWeight: "600",
+        fontSize: "16px",
+        borderRadius: "8px",
         border: "none",
-        borderRadius: "6px",
-        fontSize: "14px",
-        fontWeight: "bold",
-        backgroundColor: "#007BFF",
         color: "#fff",
-        transition: "background-color 0.3s, transform 0.2s",
+        backgroundColor: "#6A85B6",
+        backgroundImage: "linear-gradient(to right, #92E1D6, #FFD6A5)",
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.15)",
+        transition: "all 0.3s ease",
     },
     buttonHover: {
         ":hover": {
-            backgroundColor: "#0056b3",
+            transform: "translateY(-2px)",
+            backgroundImage: "linear-gradient(to right, #FF758C, #FFDEE9)",
         },
     },
     editor: {
         minHeight: "300px",
-        padding: "15px",
-        border: "none",
-        outline: "none",
+        padding: "20px",
+        borderRadius: "10px",
+        border: "2px solid #ff7e79",
+        backgroundColor: "#fff",
         fontSize: "16px",
         lineHeight: "1.6",
-        backgroundColor: "#fff",
+        color: "#333",
+        outline: "none",
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
     },
     previewWrapper: {
-        margin: "20px",
+        marginTop: "30px",
+        padding: "15px",
+        background: "linear-gradient(to right, #f7f7f7, #fff)",
+        borderRadius: "8px",
+        border: "1px solid #ddd",
+        boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.08)",
     },
     preview: {
-        padding: "15px",
-        border: "1px solid #ddd",
-        backgroundColor: "#f9f9f9",
-        borderRadius: "8px",
+        padding: "10px",
+        fontSize: "15px",
+        color: "#444",
+        lineHeight: "1.6",
+        wordBreak: "break-word",
         whiteSpace: "pre-wrap",
-        fontSize: "14px",
-        lineHeight: "1.5",
-        color: "#333",
+        backgroundColor: "#f9f9f9",
+        borderRadius: "6px",
+        border: "1px solid #ddd",
+    },
+    heading: {
+        fontSize: "20px",
+        marginBottom: "10px",
+        color: "#444",
+        textAlign: "center",
     },
 };
 
