@@ -1,34 +1,100 @@
 # Sigma-Reusable
 
-<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+import React, { useRef, useState } from "react";
 
-import { useEffect, useRef } from 'react';
+const CustomEditor = () => {
+    const editorRef = useRef(null);
+    const [content, setContent] = useState(""); // For tracking editor content
 
-export default function CKEditorComponent() {
-    const editorRef = useRef(null); // Reference to the div where the editor will be initialized
+    // Function to execute formatting commands
+    const handleCommand = (command, value = null) => {
+        document.execCommand(command, false, value);
+    };
 
-    useEffect(() => {
-        // Ensure ClassicEditor is loaded from the global `window` object
-        if (typeof window !== 'undefined' && window.ClassicEditor) {
-            window.ClassicEditor.create(editorRef.current, {
-                toolbar: ['bold', 'italic', 'link', 'bulletedList', 'numberedList', 'undo', 'redo'],
-            })
-                .then((editor) => {
-                    console.log('Editor initialized successfully', editor);
-                })
-                .catch((error) => {
-                    console.error('Error initializing editor:', error);
-                });
-        }
-    }, []);
+    // Save content on change
+    const handleContentChange = () => {
+        setContent(editorRef.current.innerHTML);
+    };
 
     return (
         <div>
-            <h2>CKEditor 5 with CDN in Next.js</h2>
-            {/* This div will be replaced by CKEditor */}
-            <div ref={editorRef}></div>
+            <div style={styles.toolbar}>
+                {/* Formatting buttons */}
+                <button onClick={() => handleCommand("bold")} style={styles.button}>
+                    Bold
+                </button>
+                <button onClick={() => handleCommand("italic")} style={styles.button}>
+                    Italic
+                </button>
+                <button onClick={() => handleCommand("underline")} style={styles.button}>
+                    Underline
+                </button>
+                <button onClick={() => handleCommand("justifyLeft")} style={styles.button}>
+                    Align Left
+                </button>
+                <button onClick={() => handleCommand("justifyCenter")} style={styles.button}>
+                    Align Center
+                </button>
+                <button onClick={() => handleCommand("justifyRight")} style={styles.button}>
+                    Align Right
+                </button>
+                <button onClick={() => handleCommand("insertOrderedList")} style={styles.button}>
+                    Ordered List
+                </button>
+                <button onClick={() => handleCommand("insertUnorderedList")} style={styles.button}>
+                    Unordered List
+                </button>
+                <button onClick={() => handleCommand("undo")} style={styles.button}>
+                    Undo
+                </button>
+                <button onClick={() => handleCommand("redo")} style={styles.button}>
+                    Redo
+                </button>
+            </div>
+
+            {/* Editable content area */}
+            <div
+                ref={editorRef}
+                contentEditable={true}
+                onInput={handleContentChange}
+                style={styles.editor}
+                suppressContentEditableWarning={true}
+            ></div>
+
+            {/* Displaying the current content */}
+            <div style={{ marginTop: "20px" }}>
+                <h3>Editor Content:</h3>
+                <div style={styles.preview}>{content}</div>
+            </div>
         </div>
     );
-}
+};
 
+// Simple inline styles
+const styles = {
+    toolbar: {
+        display: "flex",
+        gap: "10px",
+        marginBottom: "10px",
+    },
+    button: {
+        padding: "5px 10px",
+        cursor: "pointer",
+        border: "1px solid #ccc",
+        borderRadius: "4px",
+        backgroundColor: "#f4f4f4",
+    },
+    editor: {
+        border: "1px solid #ccc",
+        padding: "10px",
+        minHeight: "200px",
+        borderRadius: "4px",
+    },
+    preview: {
+        padding: "10px",
+        border: "1px solid #ddd",
+        backgroundColor: "#f9f9f9",
+    },
+};
 
+export default CustomEditor;
