@@ -17,32 +17,32 @@ const CustomEditor = () => {
     };
 
     return (
-        <div>
+        <div style={styles.container}>
             <div style={styles.toolbar}>
                 {/* Formatting buttons */}
                 <button onClick={() => handleCommand("bold")} style={styles.button}>
-                    Bold
+                    <b>B</b>
                 </button>
                 <button onClick={() => handleCommand("italic")} style={styles.button}>
-                    Italic
+                    <i>I</i>
                 </button>
                 <button onClick={() => handleCommand("underline")} style={styles.button}>
-                    Underline
+                    <u>U</u>
                 </button>
                 <button onClick={() => handleCommand("justifyLeft")} style={styles.button}>
-                    Align Left
+                    Left
                 </button>
                 <button onClick={() => handleCommand("justifyCenter")} style={styles.button}>
-                    Align Center
+                    Center
                 </button>
                 <button onClick={() => handleCommand("justifyRight")} style={styles.button}>
-                    Align Right
+                    Right
                 </button>
                 <button onClick={() => handleCommand("insertOrderedList")} style={styles.button}>
-                    Ordered List
+                    OL
                 </button>
                 <button onClick={() => handleCommand("insertUnorderedList")} style={styles.button}>
-                    Unordered List
+                    UL
                 </button>
                 <button onClick={() => handleCommand("undo")} style={styles.button}>
                     Undo
@@ -62,7 +62,7 @@ const CustomEditor = () => {
             ></div>
 
             {/* Displaying the current content */}
-            <div style={{ marginTop: "20px" }}>
+            <div style={styles.previewWrapper}>
                 <h3>Editor Content:</h3>
                 <div style={styles.preview}>{content}</div>
             </div>
@@ -70,30 +70,64 @@ const CustomEditor = () => {
     );
 };
 
-// Simple inline styles
+// Sexy and modern styles
 const styles = {
+    container: {
+        fontFamily: "'Roboto', sans-serif",
+        maxWidth: "800px",
+        margin: "40px auto",
+        border: "1px solid #ddd",
+        borderRadius: "10px",
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+        overflow: "hidden",
+        backgroundColor: "#fff",
+    },
     toolbar: {
         display: "flex",
         gap: "10px",
-        marginBottom: "10px",
+        padding: "10px",
+        backgroundColor: "#f4f4f4",
+        borderBottom: "1px solid #ddd",
+        justifyContent: "center",
+        flexWrap: "wrap",
     },
     button: {
-        padding: "5px 10px",
+        padding: "10px 15px",
         cursor: "pointer",
-        border: "1px solid #ccc",
-        borderRadius: "4px",
-        backgroundColor: "#f4f4f4",
+        border: "none",
+        borderRadius: "6px",
+        fontSize: "14px",
+        fontWeight: "bold",
+        backgroundColor: "#007BFF",
+        color: "#fff",
+        transition: "background-color 0.3s, transform 0.2s",
+    },
+    buttonHover: {
+        ":hover": {
+            backgroundColor: "#0056b3",
+        },
     },
     editor: {
-        border: "1px solid #ccc",
-        padding: "10px",
-        minHeight: "200px",
-        borderRadius: "4px",
+        minHeight: "300px",
+        padding: "15px",
+        border: "none",
+        outline: "none",
+        fontSize: "16px",
+        lineHeight: "1.6",
+        backgroundColor: "#fff",
+    },
+    previewWrapper: {
+        margin: "20px",
     },
     preview: {
-        padding: "10px",
+        padding: "15px",
         border: "1px solid #ddd",
         backgroundColor: "#f9f9f9",
+        borderRadius: "8px",
+        whiteSpace: "pre-wrap",
+        fontSize: "14px",
+        lineHeight: "1.5",
+        color: "#333",
     },
 };
 
