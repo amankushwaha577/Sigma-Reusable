@@ -1,17 +1,17 @@
-/* Main container for the datepicker */
+/* Main datepicker container */
 .react-datepicker {
-  background: linear-gradient(135deg, #f6d365, #fda085); /* Gradient background */
+  background: linear-gradient(135deg, #f6d365, #fda085); /* Cool gradient background */
   border: 1px solid #dcdcdc;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   font-family: 'Poppins', sans-serif;
   padding: 10px;
-  z-index: 1050; /* Ensure it appears above other elements */
+  z-index: 1050; /* Ensures calendar is on top */
   position: relative;
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Animation for the calendar */
+/* Animation for calendar appearance */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -23,9 +23,9 @@
   }
 }
 
-/* Header of the datepicker */
+/* Calendar header (month title and navigation) */
 .react-datepicker__header {
-  background: linear-gradient(to right, #0070f3, #00bcd4);
+  background: linear-gradient(to right, #0070f3, #00bcd4); /* Gradient */
   color: white;
   border-bottom: 1px solid #dcdcdc;
   border-radius: 12px 12px 0 0;
@@ -36,16 +36,16 @@
   text-transform: uppercase;
 }
 
-/* Month title (e.g., January 2025) */
+/* Month title */
 .react-datepicker__current-month {
   font-size: 16px;
   margin: 0;
 }
 
-/* Weekday row (e.g., Mon, Tue, etc.) */
+/* Weekday names container */
 .react-datepicker__day-names {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* 7 equal columns for days of the week */
+  grid-template-columns: repeat(7, 1fr); /* Seven equal columns for days */
   gap: 5px;
   margin: 10px 0;
   color: #fff;
@@ -53,18 +53,18 @@
   text-transform: uppercase;
 }
 
-/* Individual weekday names */
+/* Individual weekday names (e.g., Mon, Tue) */
 .react-datepicker__day-name {
   text-align: center;
+  font-size: 14px;
   color: white;
   font-weight: bold;
-  font-size: 14px;
 }
 
-/* Date grid container */
+/* Dates grid container */
 .react-datepicker__month {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* Match 7 days of the week */
+  grid-template-columns: repeat(7, 1fr); /* Seven equal columns */
   gap: 5px;
   padding: 10px 0;
 }
@@ -88,14 +88,14 @@
   background: #ffffff;
 }
 
-/* Hover effect on days */
+/* Hover effect on dates */
 .react-datepicker__day:hover {
   background-color: #ff8a65;
   color: white;
-  transform: scale(1.1); /* Slight zoom effect */
+  transform: scale(1.1); /* Slight zoom on hover */
 }
 
-/* Selected day */
+/* Selected date */
 .react-datepicker__day--selected {
   background: linear-gradient(to right, #0070f3, #00bcd4);
   color: white;
@@ -109,20 +109,19 @@
   background-color: #e8f4ff;
   color: #0070f3;
   font-weight: bold;
-  transform: scale(1.05); /* Slightly larger to highlight today */
+  transform: scale(1.05); /* Slight enlargement */
 }
 
-/* Disabled days */
+/* Disabled dates */
 .react-datepicker__day--disabled {
   color: #ccc;
   cursor: not-allowed;
   background-color: #f8f8f8;
 }
 
-/* Navigation buttons (prev/next) */
+/* Navigation buttons (previous/next) */
 .react-datepicker__navigation {
   top: 15px;
-  line-height: 1.5rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -134,7 +133,7 @@
   border-width: 2px;
 }
 
-/* Month and Time dropdowns */
+/* Dropdowns for month/time */
 .react-datepicker__month-dropdown,
 .react-datepicker__time-container {
   background: white;
