@@ -9,6 +9,7 @@
   z-index: 1050;
   position: relative;
   animation: fadeIn 0.3s ease-in-out;
+  width: 280px; /* Compact size */
 }
 
 /* Animation for calendar appearance */
@@ -39,31 +40,33 @@
 /* Weekday names container */
 .react-datepicker__day-names {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* Seven equal columns */
+  grid-template-columns: repeat(7, 1fr); /* 7 equal columns */
   gap: 5px;
   margin: 10px 0;
-  color: #fff;
+  color: #ffffff;
   font-weight: bold;
+  font-size: 14px;
+  text-align: center;
   text-transform: uppercase;
 }
 
 /* Individual weekday names */
 .react-datepicker__day-name {
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 /* Dates grid container */
 .react-datepicker__month {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* Align dates below weekday names */
+  grid-template-columns: repeat(7, 1fr); /* 7 equal columns for 7 days */
   gap: 5px;
   padding: 10px 0;
 }
 
 /* Empty placeholder for days before the 1st of the month */
 .react-datepicker__day--empty {
-  visibility: hidden;
+  visibility: hidden; /* Keeps spacing consistent */
 }
 
 /* Individual day cells */
@@ -71,13 +74,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  line-height: 2.5rem;
+  width: 2rem; /* Smaller size for alignment */
+  height: 2rem;
+  line-height: 2rem;
   text-align: center;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px; /* Reduced font size */
   font-weight: bold;
   color: #333;
   background: #ffffff;
