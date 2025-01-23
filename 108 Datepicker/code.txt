@@ -64,9 +64,9 @@
 /* Dates grid container */
 .react-datepicker__month {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* Seven equal columns */
+  grid-template-columns: repeat(7, 1fr); /* Seven equal columns for proper alignment */
   gap: 5px;
-  padding: 10px 0;
+  padding: 0 0 10px 0;
 }
 
 /* Individual day cells */
