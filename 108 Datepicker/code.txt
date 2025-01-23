@@ -1,12 +1,12 @@
 /* Main datepicker container */
 .react-datepicker {
-  background: linear-gradient(135deg, #f6d365, #fda085); /* Cool gradient background */
+  background: linear-gradient(135deg, #f6d365, #fda085);
   border: 1px solid #dcdcdc;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   font-family: 'Poppins', sans-serif;
   padding: 10px;
-  z-index: 1050; /* Ensures calendar is on top */
+  z-index: 1050;
   position: relative;
   animation: fadeIn 0.3s ease-in-out;
 }
@@ -23,9 +23,9 @@
   }
 }
 
-/* Calendar header (month title and navigation) */
+/* Calendar header */
 .react-datepicker__header {
-  background: linear-gradient(to right, #0070f3, #00bcd4); /* Gradient */
+  background: linear-gradient(to right, #0070f3, #00bcd4);
   color: white;
   border-bottom: 1px solid #dcdcdc;
   border-radius: 12px 12px 0 0;
@@ -36,16 +36,10 @@
   text-transform: uppercase;
 }
 
-/* Month title */
-.react-datepicker__current-month {
-  font-size: 16px;
-  margin: 0;
-}
-
 /* Weekday names container */
 .react-datepicker__day-names {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* Seven equal columns for days */
+  grid-template-columns: repeat(7, 1fr); /* Seven equal columns */
   gap: 5px;
   margin: 10px 0;
   color: #fff;
@@ -53,20 +47,23 @@
   text-transform: uppercase;
 }
 
-/* Individual weekday names (e.g., Mon, Tue) */
+/* Individual weekday names */
 .react-datepicker__day-name {
   text-align: center;
   font-size: 14px;
-  color: white;
-  font-weight: bold;
 }
 
 /* Dates grid container */
 .react-datepicker__month {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* Seven equal columns for proper alignment */
+  grid-template-columns: repeat(7, 1fr); /* Align dates below weekday names */
   gap: 5px;
-  padding: 0 0 10px 0;
+  padding: 10px 0;
+}
+
+/* Empty placeholder for days before the 1st of the month */
+.react-datepicker__day--empty {
+  visibility: hidden;
 }
 
 /* Individual day cells */
@@ -74,25 +71,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #333;
   width: 2.5rem;
   height: 2.5rem;
   line-height: 2.5rem;
   text-align: center;
-  margin: 0;
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
   font-size: 14px;
   font-weight: bold;
+  color: #333;
   background: #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
-/* Hover effect on dates */
+/* Hover effect */
 .react-datepicker__day:hover {
   background-color: #ff8a65;
   color: white;
-  transform: scale(1.1); /* Slight zoom on hover */
+  transform: scale(1.1);
 }
 
 /* Selected date */
@@ -103,66 +99,29 @@
   box-shadow: 0 4px 10px rgba(0, 112, 243, 0.3);
 }
 
-/* Today (current day) */
+/* Today's date */
 .react-datepicker__day--today {
   border: 1px solid #0070f3;
   background-color: #e8f4ff;
   color: #0070f3;
   font-weight: bold;
-  transform: scale(1.05); /* Slight enlargement */
 }
 
 /* Disabled dates */
 .react-datepicker__day--disabled {
   color: #ccc;
-  cursor: not-allowed;
   background-color: #f8f8f8;
+  cursor: not-allowed;
 }
 
-/* Navigation buttons (previous/next) */
+/* Navigation buttons */
 .react-datepicker__navigation {
-  top: 15px;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1050;
 }
 
 .react-datepicker__navigation-icon::before {
   border-color: white;
   border-width: 2px;
-}
-
-/* Dropdowns for month/time */
-.react-datepicker__month-dropdown,
-.react-datepicker__time-container {
-  background: white;
-  border: 1px solid #dcdcdc;
-  border-radius: 8px;
-  padding: 5px;
-  z-index: 1050;
-}
-
-/* Time list */
-.react-datepicker__time-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.react-datepicker__time-list-item {
-  padding: 8px 10px;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.react-datepicker__time-list-item:hover {
-  background-color: #f0f0f0;
-}
-
-.react-datepicker__time-list-item--selected {
-  background-color: #0070f3;
-  color: white;
-  font-weight: bold;
 }
