@@ -20,6 +20,13 @@
   font-weight: bold;
 }
 
+/* Month title (e.g., January 2025) */
+.react-datepicker__current-month {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
 /* Navigation buttons (prev/next) */
 .react-datepicker__navigation {
   top: 15px;
@@ -28,13 +35,6 @@
 
 .react-datepicker__navigation-icon::before {
   border-color: white;
-}
-
-/* Month title (e.g., January 2025) */
-.react-datepicker__current-month {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
 }
 
 /* Weekday row (e.g., Mon, Tue, etc.) */
@@ -46,17 +46,37 @@
   font-weight: bold;
 }
 
+/* Individual weekday names (e.g., Sun, Mon) */
+.react-datepicker__day-name {
+  text-align: center;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Date grid container */
+.react-datepicker__month {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 columns for days of the week */
+  gap: 5px; /* Space between dates */
+  padding: 10px 0;
+}
+
 /* Individual day cells */
 .react-datepicker__day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #333;
   width: 2.5rem;
   height: 2.5rem;
   line-height: 2.5rem;
   text-align: center;
-  margin: 0.2rem;
+  margin: 0;
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 14px;
 }
 
 /* Hover effect on days */
