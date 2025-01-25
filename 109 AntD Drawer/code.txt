@@ -1,0 +1,124 @@
+import React, { useState } from "react";
+import { Drawer, Button } from "antd";
+import "./App.css"; // Import the custom CSS
+
+const CustomDrawer = () => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const showDrawer = () => {
+    setIsDrawerOpen(true);
+  };
+
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+  };
+
+  return (
+    <div>
+      <Button type="primary" onClick={showDrawer}>
+        Open Drawer
+      </Button>
+      <Drawer
+        title="Aesthetic Drawer"
+        placement="right"
+        onClose={closeDrawer}
+        open={isDrawerOpen}
+        footer={
+          <div style={{ display: "flex", justifyContent: "flex-end", gap: "12px" }}>
+            <Button onClick={closeDrawer}>Cancel</Button>
+            <Button type="primary" onClick={closeDrawer}>
+              Confirm
+            </Button>
+          </div>
+        }
+      >
+        <p>
+          This is a custom-styled drawer with a beautiful gradient design. You can
+          place any content here and enjoy the sleek UI.
+        </p>
+      </Drawer>
+    </div>
+  );
+};
+
+export default CustomDrawer;
+
+
+
+
+/* Drawer Container */
+.ant-drawer-content {
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.3); /* Professional shadow */
+  background: linear-gradient(145deg, #ffffff, #f3f3f3); /* Clean gradient for modern look */
+  color: #333; /* Professional text color */
+  overflow: hidden; /* Maintain rounded corners */
+  animation: slideIn 0.5s ease; /* Smooth slide-in animation */
+}
+
+/* Drawer Header */
+.ant-drawer-header {
+  background: linear-gradient(145deg, #007acc, #005e99); /* Professional blue gradient */
+  color: #fff; /* White text for contrast */
+  font-size: 1.5rem; /* Larger title font */
+  font-weight: bold;
+  text-align: center; /* Center the title */
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for header */
+  animation: fadeIn 0.5s ease-in; /* Fade-in animation */
+}
+
+/* Drawer Body */
+.ant-drawer-body {
+  padding: 24px;
+  font-size: 1rem;
+  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.9); /* Slightly transparent for modern effect */
+  border-radius: 0 0 16px 16px;
+  backdrop-filter: blur(6px); /* Subtle blur effect for professionalism */
+}
+
+/* Drawer Footer Buttons */
+.ant-btn {
+  border-radius: 12px;
+  background: linear-gradient(to right, #4facfe, #00f2fe); /* Cool gradient for buttons */
+  color: #fff;
+  font-weight: 500;
+  padding: 10px 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Professional button shadow */
+  transition: all 0.3s ease; /* Smooth transitions */
+}
+
+.ant-btn:hover {
+  background: linear-gradient(to right, #00f2fe, #4facfe); /* Reverse gradient on hover */
+  transform: scale(1.05); /* Subtle zoom effect */
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25); /* Stronger hover shadow */
+}
+
+/* Primary Button */
+.ant-btn-primary {
+  background: linear-gradient(to right, #42e695, #3bb2b8); /* Professional green gradient */
+}
+
+.ant-btn-primary:hover {
+  background: linear-gradient(to right, #3bb2b8, #42e695);
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
