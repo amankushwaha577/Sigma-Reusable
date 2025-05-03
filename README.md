@@ -6,5 +6,5 @@ https://dummyjson.com/products?Limit=500
 
 
 # Dummy JSON : (SearchBar Suggestion )
-Add these suggestions below searchBar
 "https://dummyjson.com/recipes/search?q=" + userInput
+Add these suggestions below searchBar
