@@ -13,4 +13,4 @@ https://dummyjson.com/products?Limit=500
 
 # Infinite Scroll
 
-`https://picsum.photos/v2/list?page=${pageNo}&limit=20`
+"https://picsum.photos/v2/list?page=${pageNo}&limit=20"
